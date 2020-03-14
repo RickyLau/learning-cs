@@ -1,0 +1,54 @@
+group 'club.elasticsearch.learning'
+version '0.0.1'
+
+apply plugin: 'java-library'
+apply plugin: 'maven'
+apply plugin: 'idea'
+
+
+sourceCompatibility = 13
+targetCompatibility = 13
+
+
+// maven repository
+// Use aliyun maven proxy repository.
+// https://help.aliyun.com/document_detail/102512.html?spm=a2c4e.11153940.0.0.213c7bdeslkqXc
+repositories {
+    maven {
+        // proxy central & jcenter repositories.
+        url "https://maven.aliyun.com/repository/public"
+    }
+}
+
+// define dependencies version
+ext {
+    junit = '4.13'
+    log4j2 = '2.13.1'
+    guava = '28.2-jre'
+    jackson = '2.10.3'
+}
+
+dependencies {
+    // junit dependencies
+    testImplementation "junit:junit:${junit}"
+
+    // Apache logj42 dependencies
+    implementation "org.apache.logging.log4j:log4j-core:${log4j2}"
+    implementation "org.apache.logging.log4j:log4j-api:${log4j2}"
+    implementation "org.apache.logging.log4j:log4j-jcl:${log4j2}"
+    implementation "org.apache.logging.log4j:log4j-jul:${log4j2}"
+    implementation "org.apache.logging.log4j:log4j-1.2-api:${log4j2}"
+    implementation "org.apache.logging.log4j:log4j-slf4j-impl:${log4j2}"
+
+    // Fasterxml Jackson dependencies
+    implementation "com.fasterxml.jackson.core:jackson-core:${jackson}"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:${jackson}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jackson}"
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:${jackson}"
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:${jackson}"
+
+    // Google guava dependencies
+    implementation "com.google.guava:guava:${guava}"
+
+
+}
